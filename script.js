@@ -48,7 +48,7 @@
 
     let e = document.getElementById("delivery");
     e.innerHTML = "0,00 &euro;";
-    
+
 
     function estimateDelivery(event) {
         event.preventDefault();
@@ -60,11 +60,14 @@
         let vaartus2 = document.getElementById("kaks").checked;
         let check1 = document.getElementById("v1").checked;
         let check2 = document.getElementById("v2").checked;
-        if (eesnimi.value === "") {
-            alert("Sisestage eesnimi");
+        function hasNumber(myString) {
+            return /\d/.test(myString);
         }
-        else if (perekonnanimi.value === "") {
-            alert("Sisestage perekonnanimi");
+        if (eesnimi.value === "" || hasNumber(eesnimi.value)) {
+            alert("Sisestage korrektne eesnimi");
+        }
+        else if (perekonnanimi.value === "" || hasNumber(eesnimi.value)) {
+            alert("Sisestage korrektne perekonnanimi");
         }
         else if (!vaartus1 && !vaartus2) {
             alert("Vali makseviis");
@@ -81,11 +84,11 @@
         } else {
 
             let tulemus = 0;
-            if (check1){
-                tulemus=tulemus+5.00;
+            if (check1) {
+                tulemus = tulemus + 5.00;
             }
-            if(check2){
-                tulemus=tulemus+1.00;
+            if (check2) {
+                tulemus = tulemus + 1.00;
             }
             switch (linn.value) {
                 case "trt":
@@ -97,7 +100,7 @@
                     break;
             }
 
-            e.innerHTML = tulemus+" &euro;";
+            e.innerHTML = tulemus + " &euro;";
 
         }
 
