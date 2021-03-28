@@ -66,10 +66,10 @@
         else if (perekonnanimi.value === "") {
             alert("Sisestage perekonnanimi");
         }
-        if (!vaartus1 && !vaartus2) {
+        else if (!vaartus1 && !vaartus2) {
             alert("Vali makseviis");
         }
-        if (linn.value === "") {
+        else if (linn.value === "") {
 
             alert("Palun valige linn nimekirjast");
 
