@@ -66,7 +66,7 @@
         if (eesnimi.value === "" || hasNumber(eesnimi.value)) {
             alert("Sisestage korrektne eesnimi");
         }
-        else if (perekonnanimi.value === "" || hasNumber(eesnimi.value)) {
+        else if (perekonnanimi.value === "" || hasNumber(perekonnanimi.value)) {
             alert("Sisestage korrektne perekonnanimi");
         }
         else if (!vaartus1 && !vaartus2) {
