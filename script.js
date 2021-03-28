@@ -48,7 +48,7 @@
 
     let e = document.getElementById("delivery");
     e.innerHTML = "0,00 &euro;";
-    let tulemus = 0;
+    
 
     function estimateDelivery(event) {
         event.preventDefault();
@@ -58,13 +58,15 @@
         let perekonnanimi = document.getElementById("lname");
         let vaartus1 = document.getElementById("yks").checked;
         let vaartus2 = document.getElementById("kaks").checked;
+        let check1 = document.getElementById("v1").checked;
+        let check2 = document.getElementById("v2").checked;
         if (eesnimi.value === "") {
             alert("Sisestage eesnimi");
         }
         else if (perekonnanimi.value === "") {
             alert("Sisestage perekonnanimi");
         }
-        if (vaartus1 === false && vaartus2 === false) {
+        if (!vaartus1 && !vaartus2) {
             alert("Vali makseviis");
         }
         if (linn.value === "") {
@@ -77,16 +79,25 @@
 
 
         } else {
+
+            let tulemus = 0;
+            if (check1){
+                tulemus=tulemus+5.00;
+            }
+            if(check2){
+                tulemus=tulemus+1.00;
+            }
             switch (linn.value) {
-                case trt:
+                case "trt":
+                case "nrv":
                     tulemus = tulemus + 2.50;
                     break;
-                case prn:
+                case "prn":
                     tulemus = tulemus + 3.00;
                     break;
             }
 
-            e.innerHTML = "x,xx &euro;";
+            e.innerHTML = tulemus+" &euro;";
 
         }
 
@@ -132,8 +143,8 @@ function GetMap() {
         //text: 'UT'
     });
     pushpin.metadata = {
-        title: 'Pin Title',
-        description: 'Pin discription'
+        title: 'Tartu Ülikool',
+        description: 'Aadress'
     };
     Microsoft.Maps.Events.addHandler(pushpin, 'click', pushpinClicked);
 
@@ -146,8 +157,8 @@ function GetMap() {
 
     });
     pushpin2.metadata = {
-        title: 'Pin Title',
-        description: 'Pin discription'
+        title: 'Observatoorium',
+        description: 'Aadress'
     };
     Microsoft.Maps.Events.addHandler(pushpin2, 'click', pushpinClicked);
     map.entities.push(pushpin2);
